@@ -1,4 +1,4 @@
-provider "aws" {
+provider "aws"{ 
   access_key    = "${var.accesskey}"
   secret_key    = "${var.secretkey}"
   region        = "us-east-1"
@@ -29,8 +29,8 @@ resource "aws_instance" "ec2-server" {
   vpc_security_group_ids = ["${data.aws_security_group.sg.id}"]
 
   tags = {
-    Name        = "test.*.name"
-    Environment = "drest-test[count.index]"
+    Name        = "test-${count.index + 1}"
+    Environment = "drest-test-${count.index + 1}"
   }
 
 }
